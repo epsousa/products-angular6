@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   carregarTabela() {
-    this.http.get('http://localhost:8085/product').toPromise().then(res => {
+    this.http.get('http://ec2-52-67-195-41.sa-east-1.compute.amazonaws.com:8085/product').toPromise().then(res => {
       this.produtos = res;
     });
   }
@@ -29,13 +29,13 @@ export class HomeComponent implements OnInit {
   enviar() {
     console.log(this.produto.id);
     if (this.produto.id === '') {
-      this.http.post('http://localhost:8085/product', this.produto).toPromise().then(res => {
+      this.http.post('http://ec2-52-67-195-41.sa-east-1.compute.amazonaws.com:8085/product', this.produto).toPromise().then(res => {
         this.produto = new Product('', '', 0, '');
         this.carregarTabela();
         alert('Enviado com sucesso!');
       });
     } else {
-      this.http.put('http://localhost:8085/product', this.produto).toPromise().then(res => {
+      this.http.put('http://ec2-52-67-195-41.sa-east-1.compute.amazonaws.com:8085/product', this.produto).toPromise().then(res => {
         this.produto = new Product('', '', 0, '');
         this.carregarTabela();
         alert('Enviado com sucesso!');
@@ -44,13 +44,13 @@ export class HomeComponent implements OnInit {
   }
 
   editar(id: string) {
-    this.http.get('http://localhost:8085/product/' + id).toPromise().then(res => {
+    this.http.get('http://ec2-52-67-195-41.sa-east-1.compute.amazonaws.com:8085/product/' + id).toPromise().then(res => {
       this.produto = res;
     });
   }
 
   delete(id: string) {
-    this.http.delete('http://localhost:8085/product/' + id).toPromise().then(res => {
+    this.http.delete('http://ec2-52-67-195-41.sa-east-1.compute.amazonaws.com:8085/product/' + id).toPromise().then(res => {
       this.carregarTabela();
       alert('Deletado com sucesso');
     });
