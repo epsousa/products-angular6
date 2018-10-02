@@ -8,6 +8,6 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
 
-]
+];
 
 export const routing = RouterModule.forRoot(appRoutes);
